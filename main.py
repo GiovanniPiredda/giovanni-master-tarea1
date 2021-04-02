@@ -3,8 +3,6 @@ import csv
 import os
 import prepend
 
-print("hola")
-
 #Download daily updated source file from the  internet
 url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
 dataSet = requests.get(url)
