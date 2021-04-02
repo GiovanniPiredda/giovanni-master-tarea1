@@ -3,6 +3,13 @@ import csv
 import os
 import prepend
 
+#Creation store directories
+if not os.path.exists("sourceFiles"):
+    os.mkdir("sourceFiles")
+
+if not os.path.exists("dataPerCountry"):
+    os.mkdir("dataPerCountry")
+
 #Download daily updated source file from the  internet
 url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
 dataSet = requests.get(url)
