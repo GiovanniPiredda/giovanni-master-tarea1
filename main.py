@@ -3,15 +3,17 @@ import csv
 import os
 import prepend
 
+print("hola")
+
 #Download daily updated source file from the  internet
 url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
 dataSet = requests.get(url)
 
 #Save source file in local
-open(r"../tarea1/sourceFiles/owid-covid-data.csv", "wb").write(dataSet.content)
+open(r"sourceFiles/owid-covid-data.csv", "wb").write(dataSet.content)
 
 #Open source file for splitting info per country
-with open(r"../tarea1/sourceFiles/owid-covid-data.csv") as sourceData:
+with open(r"sourceFiles/owid-covid-data.csv") as sourceData:
     linesReader = csv.reader(sourceData)
 
     header = next(linesReader)
