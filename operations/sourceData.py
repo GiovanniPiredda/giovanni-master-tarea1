@@ -3,6 +3,13 @@ import csv
 import os
 
 ######################
+# Documentation      #
+#
+# This function gets the latest available covid incidence dataset csv from https://covid.ourworldindata.org
+# and splits it to have each countries data in separate datasets.
+######################
+
+######################
 # AUXILIARY FUNCTION #
 ######################
 
