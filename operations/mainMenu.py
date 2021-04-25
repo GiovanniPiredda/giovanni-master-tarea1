@@ -1,4 +1,4 @@
-from operations import sourceData, syntheticData
+from operations import sourceData, syntheticData, singleCountryDetail
 
 def displayMenu():
     print("[0] Exit the program")
@@ -25,7 +25,9 @@ while option != 0:
 
     #Country details
     elif option == 3:
-        print("Not implemented yet. Coming soon :)")
+        #print("Not implemented yet. Coming soon :)")
+        singleCountryDetail.singleData()
+
 
     #Countries comparison
     elif option == 4:
