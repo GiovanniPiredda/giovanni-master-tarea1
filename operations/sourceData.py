@@ -1,6 +1,9 @@
-import requests
 import csv
 import os
+import shutil
+
+import requests
+
 
 ######################
 # Documentation      #
@@ -29,7 +32,6 @@ def prepend_line(file_name, line):
     # Rename dummy file as the original file
     os.rename(dummy_file, file_name)
 
-
 #################
 # MAIN FUNCTION #
 #################
@@ -42,6 +44,9 @@ def updateData():
 
     if not os.path.exists("dataPerCountry"):
         os.mkdir("dataPerCountry")
+
+    if not os.path.exists("aggregateData"):
+        os.mkdir("aggregateData")
 
     #Download daily updated source file from the  internet
     url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
@@ -65,8 +70,17 @@ def updateData():
     #Add header to the generated files
     headerStr = ','.join(header) + "\n"
 
-    basePath = "dataPerCountry/"
+    sourcePath = os.path.realpath('.') + "/dataPerCountry/"
+    destinationPath = os.path.realpath('.') + "/aggregateData/"
 
-    for entry in os.listdir(basePath):
-        if os.path.isfile(os.path.join(basePath, entry)):
-            prepend_line(basePath + entry, headerStr)
+    print(sourcePath)
+    print(destinationPath)
+
+    for entry in os.listdir(sourcePath):
+        if os.path.isfile(os.path.join(sourcePath, entry)):
+            prepend_line(sourcePath + entry, headerStr)
+
+        if (entry == "Africa.csv" or entry == "Asia.csv" or entry == "Europe.csv" or entry == "European Union.csv" or
+            entry == "Oceania.csv" or entry == "International.csv" or entry == "North America.csv" or
+            entry == "South America.csv" or entry == "World.csv"):
+            shutil.move(sourcePath + entry, destinationPath + entry)
