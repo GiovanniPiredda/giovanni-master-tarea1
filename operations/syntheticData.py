@@ -69,11 +69,12 @@ def getSyntheticData():
                 monthyIncrease = 0.0
 
                 for row in fileRows[1:]:
-                    if (row[4]):
-                        totalHistoricCasesInCountry += float(row[4])
+                    if row[4] != "total_cases":
+                        if (row[4]):
+                            totalHistoricCasesInCountry += float(row[4])
 
-                    if oneMonthAgo <= datetime.strptime(row[3], '%Y-%m-%d').date() <= today and row[5]:
-                        monthyIncrease += float(row[5])
+                        if oneMonthAgo <= datetime.strptime(row[3], '%Y-%m-%d').date() <= today and row[5]:
+                            monthyIncrease += float(row[5])
 
                 if totalHistoricCasesInCountry > syntheticData.get("highestHistoricalValue"):
                     syntheticData["highestHistoricalValue"] = totalHistoricCasesInCountry
